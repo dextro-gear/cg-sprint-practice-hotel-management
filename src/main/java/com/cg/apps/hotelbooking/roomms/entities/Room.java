@@ -3,6 +3,9 @@ package com.cg.apps.hotelbooking.roomms.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.cg.apps.hotelbooking.hotelms.entity.Hotel;
 
 @Entity
 public class Room {
@@ -15,8 +18,9 @@ public class Room {
     private int roomNumber;
     private boolean available;
     private double cost;
-//    Hotel hotel;
 
+@ManyToOne
+private Hotel hotel;
     public Room() {}
 
     public Room(int floorNumber, int roomNumber, boolean available, double cost) {
@@ -30,7 +34,15 @@ public class Room {
         return roomID;
     }
 
-    public void setRoomID(long roomID) {
+    public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+	public void setRoomID(long roomID) {
         this.roomID = roomID;
     }
 

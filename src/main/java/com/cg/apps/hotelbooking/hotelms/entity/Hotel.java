@@ -1,8 +1,11 @@
 package com.cg.apps.hotelbooking.hotelms.entity;
 
+import com.cg.apps.hotelbooking.roomms.entities.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.*;
 @Entity
 public class Hotel {
 	@GeneratedValue
@@ -11,7 +14,18 @@ public class Hotel {
 	private String hotelName;
 	private String address;
 	
-	public Hotel() {
+	@OneToMany
+	private List<Room>roomsList;
+	
+	public List<Room> getRoomsList() {
+		return roomsList;
+	}
+
+	public void setRoomsList(List<Room> roomsList) {
+		this.roomsList = roomsList;
+	}
+
+	public Hotel(String hotelName2, String adderss, List<Room> rooms) {
 		
 	}
 
