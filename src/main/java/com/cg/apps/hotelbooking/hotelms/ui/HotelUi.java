@@ -29,7 +29,7 @@ public class HotelUi {
 	}
 	
 	public void displayHotel(Hotel hotel) {
-		System.out.println("Hotel id :-"+hotel.getHotelId()+"Hotel Name :-"+hotel.getHotelName()+"Hotel Address :-"+hotel.getAddress());
+		System.out.println("Hotel id :-"+hotel.getHotelId()+" Hotel Name :-"+hotel.getHotelName()+" Hotel Address :-"+hotel.getAddress());
 	}
 	
 	
