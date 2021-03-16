@@ -1,4 +1,4 @@
-package com.cg.apps.hotelbooking.roomms.dao;
+package com.cg.apps.hotelbooking.roomms.services;
 
 import com.cg.apps.hotelbooking.roomms.entities.Room;
 
