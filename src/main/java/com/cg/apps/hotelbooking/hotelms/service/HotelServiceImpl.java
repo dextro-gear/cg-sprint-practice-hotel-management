@@ -23,7 +23,7 @@ public class HotelServiceImpl implements IHotelService {
 	@Override
 	public Hotel addHotel(String hotelName, String address) {
 		Hotel hotel=new Hotel(hotelName,address);
-		dao.addHotel(hotelName, address);
+		dao.addHotel(hotel);
 		return hotel;
 	}
 

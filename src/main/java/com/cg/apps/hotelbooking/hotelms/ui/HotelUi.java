@@ -15,11 +15,11 @@ public class HotelUi {
 	public void start() {
 		System.out.println("******Displaying all the Hotels*******");
 		Hotel Hotel1=hotelservice.addHotel("Taj Hotel", "Mumbai");
-		Hotel Hotel2=hotelservice.addHotel(" JW Marriot ","Delhi");
-		Hotel hotel3=hotelservice.addHotel("Radisson Blue", "Agra");
+		Hotel Hotel2=hotelservice.addHotel("JW Marriot ","Delhi");
+		Hotel Hotel3=hotelservice.addHotel("Radisson Blue", "Agra");
 		displayHotel(Hotel1);
 		displayHotel(Hotel2);
-		displayHotel(hotel3);
+		displayHotel(Hotel3);
 		
 		System.out.println("*****Displaying hotel by id*****");
 		long fetchedHotelId=Hotel1.getHotelId();

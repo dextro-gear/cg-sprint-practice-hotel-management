@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Hotel {
 	@GeneratedValue
 	@Id
-	private long hotelId;
+	private Long hotelId;
 	private String hotelName;
 	private String address;
 	
@@ -20,10 +20,10 @@ public class Hotel {
 		this.hotelName = hotelName;
 		this.address = address;
 	}
-	public long getHotelId() {
+	public Long getHotelId() {
 		return hotelId;
 	}
-	public void setHotelId(long hotelId) {
+	public void setHotelId(Long hotelId) {
 		this.hotelId = hotelId;
 	}
 	public String getHotelName() {

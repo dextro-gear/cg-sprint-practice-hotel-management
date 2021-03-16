@@ -21,10 +21,10 @@ public class HotelDaoImpl implements IHotelDao {
 	}
 @Transactional
 	@Override
-	public Hotel addHotel(String hotelName, String address) {
-		Hotel hotel= new Hotel(hotelName,address);
+	public Hotel addHotel(Hotel hotel) {
+		
 		em.persist(hotel);
-		return em.find(Hotel.class, hotel.getHotelId());
+		return hotel;
 	}
 
 }
