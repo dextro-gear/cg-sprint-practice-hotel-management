@@ -23,14 +23,14 @@
 5. Find all guests who checked out today from hotel.
 
 ### Sprints
-1. **Sprint 1: ** Create Project
-2. **Sprint 2: ** Create hotelms (skip relation part with rooms). Check if it is working in UI.
-3. **Sprint 3: ** Create roomms (skip relation part with hotel). Check if it is working in UI.
-4. **Sprint 4: ** Setup relation between Hotel and Room. Complete and correct the service implementions.
-5. **Sprint 5: ** Create guestms. Setup relation between Guest, GuestTransaction and with Room, complete service implementation.
-6. **Sprint 6: ** Open REST endpoints for hotel service.
-7. **Sprint 7: ** Open REST endpoints for room service.
-8. **Sprint 8: ** Open REST endpoints for guest service.
+1. **Sprint 1:** Create Project
+2. **Sprint 2:** Create hotelms (skip relation part with rooms). Check if it is working in UI.
+3. **Sprint 3:** Create roomms (skip relation part with hotel). Check if it is working in UI.
+4. **Sprint 4:** Setup relation between Hotel and Room. Complete and correct the service implementions.
+5. **Sprint 5:** Create guestms. Setup relation between Guest, GuestTransaction and with Room, complete service implementation.
+6. **Sprint 6:** Open REST endpoints for hotel service.
+7. **Sprint 7:** Open REST endpoints for room service.
+8. **Sprint 8:** Open REST endpoints for guest service.
 
 ### Rest endpoints
 
@@ -48,9 +48,9 @@
 - Find all available rooms in a hotel.
 
 #### Guest Service endpoints
-- allot a room for a guest
-- guest checked out from hotel 
-- transaction history of a guest
+- Allot a room for a guest
+- Guest checked out from hotel 
+- Transaction history of a guest
  
  
          GuestTransaction {
