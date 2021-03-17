@@ -19,9 +19,10 @@ public class Room {
     private boolean available;
     private double cost;
 
-@ManyToOne
-private Hotel hotel;
-    public Room() {}
+    @ManyToOne
+    private Hotel hotel;
+
+    public Room() { }
 
     public Room(int floorNumber, int roomNumber, boolean available, double cost) {
         this.floorNumber = floorNumber;

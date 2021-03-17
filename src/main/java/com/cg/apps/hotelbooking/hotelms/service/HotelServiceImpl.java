@@ -15,11 +15,12 @@ import com.cg.apps.hotelbooking.roomms.entities.Room;
 
 @Service
 public class HotelServiceImpl implements IHotelService {
+
 	@Autowired
 	private IHotelRepository hotelRepository;
 
 	@Override
-	public Hotel findbyId(Long hotelId) {
+	public Hotel findById(Long hotelId) {
 		Optional<Hotel> optional= hotelRepository.findById(hotelId);
 		if(!optional.isPresent()) {
 			throw new HotelNotFoundException("Hotel is not found for the entered id");
@@ -30,9 +31,11 @@ public class HotelServiceImpl implements IHotelService {
 	@Transactional
 	@Override
 	public Hotel addHotel(String hotelName, String address, List<Room> rooms) {
-		Hotel hotel=new Hotel(hotelName,address,rooms);
-		hotelRepository.save(hotel);
-		return hotel;
+		return hotelRepository.save(new Hotel(hotelName,address,rooms));
+	}
+	@Transactional
+	public Hotel addHotel(String hotelName, String address) {
+		return hotelRepository.save(new Hotel(hotelName,address));
 	}
 
 }
