@@ -2,7 +2,6 @@ package com.cg.apps.hotelbooking;
 
 import com.cg.apps.hotelbooking.hotelms.ui.HotelUi;
 import com.cg.apps.hotelbooking.roomms.ui.RoomConsoleUI;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
