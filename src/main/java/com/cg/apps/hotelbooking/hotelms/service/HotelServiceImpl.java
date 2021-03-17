@@ -20,12 +20,10 @@ public class HotelServiceImpl implements IHotelService {
 
 	@Override
 	public Hotel findbyId(Long hotelId) {
-		
 		Optional<Hotel> optional= hotelRepository.findById(hotelId);
 		if(!optional.isPresent()) {
 			throw new HotelNotFoundException("Hotel is not found for the entered id");
 		}
-
 		return optional.get();
 	}
 	
