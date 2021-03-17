@@ -16,7 +16,6 @@ public class HotelServiceImpl implements IHotelService {
 	@Override
 	public Hotel findbyId(Long hotelId) {
 		Hotel hotel = dao.findbyId(hotelId);
-
 		return hotel;
 	}
 	@Transactional
