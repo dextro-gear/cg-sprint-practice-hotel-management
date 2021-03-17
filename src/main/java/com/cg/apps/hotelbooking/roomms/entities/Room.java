@@ -24,7 +24,8 @@ public class Room {
 
     public Room() { }
 
-    public Room(int floorNumber, int roomNumber, boolean available, double cost) {
+    public Room(Hotel hotel,int floorNumber, int roomNumber, boolean available, double cost) {
+    	this.hotel=hotel;
         this.floorNumber = floorNumber;
         this.roomNumber = roomNumber;
         this.available = available;
