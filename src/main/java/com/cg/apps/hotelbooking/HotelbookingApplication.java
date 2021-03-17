@@ -1,6 +1,7 @@
 package com.cg.apps.hotelbooking;
 
-import com.cg.apps.hotelbooking.hotelms.ui.HotelUi;
+import com.cg.apps.hotelbooking.guestms.ui.GuestConsoleUI;
+import com.cg.apps.hotelbooking.hotelms.ui.HotelConsoleUI;
 import com.cg.apps.hotelbooking.roomms.ui.RoomConsoleUI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +16,11 @@ public class HotelbookingApplication {
 		RoomConsoleUI roomUI = context.getBean(RoomConsoleUI.class);
 		roomUI.start();
 
-		HotelUi hotelUI = context.getBean(HotelUi.class);
+		HotelConsoleUI hotelUI = context.getBean(HotelConsoleUI.class);
 		hotelUI.start();
+
+		GuestConsoleUI guestUI = context.getBean(GuestConsoleUI.class);
+		guestUI.start();
 	}
 
 }

@@ -12,6 +12,8 @@ public class RoomConsoleUI {
 
     public void start(){
 
+        System.out.println("\nROOMS\n==============================");
+
         System.out.println(roomService.addRoom(12, 1, 12, 2000).toString());
         System.out.println(roomService.addRoom(12, 1, 13, 1000).toString());
         System.out.println(roomService.addRoom(12, 1, 14, 2500).toString());
