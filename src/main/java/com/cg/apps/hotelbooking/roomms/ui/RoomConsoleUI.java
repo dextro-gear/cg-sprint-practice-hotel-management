@@ -1,4 +1,4 @@
-package com.cg.apps.hotelbooking.roomms.ui;
+/*package com.cg.apps.hotelbooking.roomms.ui;
 
 import com.cg.apps.hotelbooking.roomms.services.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,3 +23,4 @@ public class RoomConsoleUI {
     }
 
 }
+*/
