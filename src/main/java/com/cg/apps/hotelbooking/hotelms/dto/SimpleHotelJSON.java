@@ -1,12 +1,23 @@
 package com.cg.apps.hotelbooking.hotelms.dto;
 
-public class SimpleAddNewHotelRequest {
-    String name;
-    String address;
+public class SimpleHotelJSON implements IHotelJSON{
 
-    public SimpleAddNewHotelRequest(String name, String address) {
+    private Long id;
+    private String name;
+    private String address;
+
+    public SimpleHotelJSON(Long id, String name, String address) {
+        this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
