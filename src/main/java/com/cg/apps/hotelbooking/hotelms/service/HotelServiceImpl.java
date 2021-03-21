@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.cg.apps.hotelbooking.roomms.dto.RoomRequestDetails;
+import com.cg.apps.hotelbooking.roomms.services.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class HotelServiceImpl implements IHotelService {
 
 	@Autowired
 	private IHotelRepository hotelRepository;
+
+	@Autowired
+	private RoomServiceImpl roomService;
 
 	@Override
 	public Hotel findById(Long hotelId) {
@@ -38,4 +43,20 @@ public class HotelServiceImpl implements IHotelService {
 		return hotelRepository.save(new Hotel(hotelName,address));
 	}
 
+	@Transactional
+	public Hotel addRoomsToHotel(long hotelID, List<RoomRequestDetails> rooms){
+
+		for (RoomRequestDetails roomDetails : rooms){
+			roomService.addRoom(hotelID, roomDetails.getFloorNumber(), roomDetails.getRoomNumber(), roomDetails.getCost());
+		}
+
+		return hotelRepository.findById(hotelID).get();
+	}
+
+	@Transactional
+	public Hotel addRoomToHotel(Hotel hotel, Room room){
+		List<Room> roomsList = hotel.getRoomsList();
+		roomsList.add(room);
+		return hotelRepository.save(hotel);
+	}
 }

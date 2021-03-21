@@ -14,11 +14,11 @@ public class RoomConsoleUI {
 
         System.out.println("\nROOMS\n==============================");
 
-        System.out.println(roomService.addRoom(12, 1, 12, 2000).toString());
-        System.out.println(roomService.addRoom(12, 1, 13, 1000).toString());
-        System.out.println(roomService.addRoom(12, 1, 14, 2500).toString());
-        System.out.println(roomService.addRoom(12, 1, 15, 3000).toString());
-        System.out.println(roomService.addRoom(12, 1, 16, 2450).toString());
+        System.out.println(roomService.addRoom(2, 1, 12, 2000).toString());
+        System.out.println(roomService.addRoom(2, 1, 13, 1000).toString());
+        System.out.println(roomService.addRoom(2, 1, 14, 2500).toString());
+        System.out.println(roomService.addRoom(2, 1, 15, 3000).toString());
+        System.out.println(roomService.addRoom(2, 1, 16, 2450).toString());
 
     }
 

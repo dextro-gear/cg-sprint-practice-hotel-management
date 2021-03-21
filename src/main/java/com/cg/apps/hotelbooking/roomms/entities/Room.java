@@ -1,11 +1,9 @@
 package com.cg.apps.hotelbooking.roomms.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.cg.apps.hotelbooking.hotelms.entity.Hotel;
+import com.cg.apps.hotelbooking.roomms.dto.SimpleRoomJSON;
 
 @Entity
 public class Room {
@@ -19,13 +17,13 @@ public class Room {
     private boolean available;
     private double cost;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Hotel hotel;
 
     public Room() { }
 
     public Room(Hotel hotel,int floorNumber, int roomNumber, boolean available, double cost) {
-    	this.hotel=hotel;
+    	this.hotel = hotel;
         this.floorNumber = floorNumber;
         this.roomNumber = roomNumber;
         this.available = available;

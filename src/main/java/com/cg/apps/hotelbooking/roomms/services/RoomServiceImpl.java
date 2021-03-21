@@ -3,13 +3,16 @@ package com.cg.apps.hotelbooking.roomms.services;
 import com.cg.apps.hotelbooking.hotelms.dao.IHotelRepository;
 import com.cg.apps.hotelbooking.hotelms.entity.Hotel;
 import com.cg.apps.hotelbooking.hotelms.exceptions.HotelNotFoundException;
+import com.cg.apps.hotelbooking.hotelms.service.HotelServiceImpl;
 import com.cg.apps.hotelbooking.hotelms.service.IHotelService;
 import com.cg.apps.hotelbooking.roomms.dao.IRoomRepository;
+import com.cg.apps.hotelbooking.roomms.dto.SimpleRoomJSON;
 import com.cg.apps.hotelbooking.roomms.entities.Room;
 import com.cg.apps.hotelbooking.roomms.exceptions.RoomNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +27,9 @@ public class RoomServiceImpl implements IRoomService {
 	private IHotelRepository hotelRepository;
 
 	@Autowired
-	IHotelService hotelService;
+	private HotelServiceImpl hotelService;
 
+	@Transactional
 	@Override
 	public Room addRoom(long hotelID, int floorNo, int roomNo, double cost) {
 		Optional<Hotel> optional = hotelRepository.findById(hotelID);
@@ -33,14 +37,13 @@ public class RoomServiceImpl implements IRoomService {
 			throw new HotelNotFoundException("Hotel is not found for this id");
 		}
 
-		Hotel hotel = hotelService.findById(hotelID);
+		Hotel hotel = optional.get();
 		Room room = new Room(hotel, floorNo, roomNo, true, cost);
 		room = roomRepository.save(room);
-		List<Room> roomsList = hotel.getRoomsList();
-		roomsList.add(room);
-		hotelRepository.save(hotel);
+		hotelService.addRoomToHotel(hotel, room);
 		return room;
 	}
+
 
 	@Override
 	public Room findByID(long roomID) {
@@ -54,29 +57,29 @@ public class RoomServiceImpl implements IRoomService {
 	public Room findRoom(long hotelID, int floorNo, int roomNo) {
 		Hotel hotel = hotelService.findById(hotelID);
 		List<Room> roomList = hotel.getRoomsList();
+		Room desiredRoom = null;
 		for (Room room : roomList) {
-			if (!((room.getFloorNumber() == floorNo) && (room.getRoomNumber() == roomNo))) {
-
-				throw new RoomNotFoundException("Room is not found in this hotel");
-			} else {
-				return room;
+			if ((room.getFloorNumber() == floorNo) && (room.getRoomNumber() == roomNo)) {
+				desiredRoom = room;
 			}
 		}
-		return null;
+		if(desiredRoom == null)
+			throw new RoomNotFoundException("Room no." + roomNo + " in floor " + floorNo + " does not exist in Hotel " + hotelID);
 
+		return desiredRoom;
 	}
 
 	@Override
 	public List<Room> retrieveAllRoomsInHotel(long hotelID) {
-		Hotel hotel =hotelService.findById(hotelID);
+		Hotel hotel = hotelService.findById(hotelID);
 		return hotel.getRoomsList();
-		
+
 	}
 
 	@Override
 	public List<Room> availableRoomsInHotel(long hotelID) {
-		Hotel hotel =hotelService.findById(hotelID);
-		List<Room> availableRoomList=new ArrayList<>();
+		Hotel hotel = hotelService.findById(hotelID);
+		List<Room> availableRoomList = new ArrayList<>();
 		List<Room> roomList = hotel.getRoomsList();
 		for(Room room:roomList) {
 			if(room.isAvailable()) {
@@ -84,6 +87,6 @@ public class RoomServiceImpl implements IRoomService {
 			}
 		}
 	return availableRoomList;
-		
+
 	}
 }
