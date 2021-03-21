@@ -2,6 +2,7 @@ package com.cg.apps.hotelbooking.hotelms.entity;
 
 import com.cg.apps.hotelbooking.roomms.entities.Room;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -16,7 +17,7 @@ public class Hotel {
 	private String hotelName;
 	private String address;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Room> roomsList;
 	
 
